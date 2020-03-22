@@ -1,18 +1,51 @@
 import React from 'react';
-import { PageHeader } from 'antd';
+import { useHistory, useRouteMatch } from 'react-router-dom';
+import {
+  Classes,
+  Navbar,
+  NavbarGroup,
+  NavbarHeading,
+  NavbarDivider,
+  Button,
+} from '@blueprintjs/core';
 
-export default function Header() {
+export default function Header(){
 
-  const sitePageHeader = {
-    border: "1px solid rgb(235, 237, 240)"
+  const history = useHistory();
+
+  let math = useRouteMatch('/');
+
+  function BtnBack(){
+    if(!math.isExact){
+      return (
+        <>
+          <Button className={Classes.MINIMAL} icon='arrow-left' />
+          <NavbarDivider/>
+          <NavbarHeading>
+            Picbuy
+          </NavbarHeading>
+        </>
+      );
+    }else{
+      return (
+        <>
+          <NavbarHeading>
+            Picbuy
+          </NavbarHeading>
+        </>
+      );
+    }
   }
 
-  return (
-    <PageHeader
-      className={sitePageHeader}
-      onBack={()=> null}
-      title='Picbuy'
-      subTitle='Compre ou venda imagens'
-    />
+  return(
+    <Navbar>
+      <NavbarGroup>
+        <BtnBack/>
+        <NavbarDivider />
+          <Button className={Classes.MINIMAL} icon="home" text="Home" onClick={() => history.push('/')} />
+          <Button className={Classes.MINIMAL} icon="media" text="Imagens Gratis" onClick={() => history.push('/freeimages')} />
+          <Button className={Classes.MINIMAL} icon="person" text="Perfil" onClick={() => history.push('/profile')} />
+      </NavbarGroup>
+    </Navbar>
   );
 }
