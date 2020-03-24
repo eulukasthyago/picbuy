@@ -4,7 +4,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from './layout/Header';
 import Sidebar from './layout/Sidebar';
 import Home from './pages/Home';
-import Freeimages from './pages/Freeimages';
+import Pexels from './pages/Pexels';
+import PexelsProd from './pages/Freeimages/pexels';
 
 const Router = () => (
     <BrowserRouter>
@@ -19,8 +20,8 @@ const Router = () => (
                         <Route exact path='/' component={Home} />
                         <Route path='/products/:id'><h1>Produto especifico</h1></Route>
                         <Route path='/products/'><h1>Todos os produtos</h1></Route>
-                        {/* <Route path='/freeimages/:id' component={FullPageFreeImage} />> */}
-                        <Route path='/freeimages/' component={Freeimages} />
+                        <Route path='/freeimages/Pexels/:id' component={PexelsProd} />
+                        <Route path='/freeimages/Pexels/' component={Pexels} />
                         <Route path='/cart'><h1>Carrinho</h1></Route>
                     </Switch>
                 </div>

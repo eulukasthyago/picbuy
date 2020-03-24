@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Card, Elevation, Button } from '@blueprintjs/core';
-import { useHistory } from 'react-router-dom';
+// import { Card, Elevation, Button } from '@blueprintjs/core';
+// import { useHistory } from 'react-router-dom';
 import './style.css';
 
-const useFech = url =>{
-    const [images, setImages] = useState();
+// const useFech = url =>{
+//     const [images, setImages] = useState();
 
-    async function fetchData(){
-        const response = await fetch(url);
-        const json = await response.json();
-        setImages(json);
-    }
+//     async function fetchData(){
+//         const response = await fetch(url);
+//         const json = await response.json();
+//         setImages(json);
+//     }
 
-    useEffect(() => {fetchData()});
-    return images;
-}
+//     useEffect(() => {fetchData()});
+//     return images;
+// }
 
 export default function Home(){
-    const history = useHistory();
+    // const history = useHistory();
 
     // const imgs = useFech('https://api.unsplash.com/photos/?client_id=CiZakpz3UaJ9JAqPMaMFb682veipZmWm1PZm6uayVNY');
 

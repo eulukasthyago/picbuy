@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import {
   Classes,
   Navbar,
@@ -7,43 +7,40 @@ import {
   NavbarHeading,
   NavbarDivider,
   Button,
+  Popover,
+  Menu,
+  MenuItem
 } from '@blueprintjs/core';
+
+import Brbutton from '../../components/Brbutton';
+import MrMenuItem from '../../components/MrMenuItem';
 
 export default function Header(){
 
   const history = useHistory();
 
-  let math = useRouteMatch('/');
-
-  function BtnBack(){
-    if(!math.isExact){
-      return (
-        <>
-          <Button className={Classes.MINIMAL} icon='arrow-left' />
-          <NavbarDivider/>
-          <NavbarHeading>
-            Picbuy
-          </NavbarHeading>
-        </>
-      );
-    }else{
-      return (
-        <>
-          <NavbarHeading>
-            Picbuy
-          </NavbarHeading>
-        </>
-      );
-    }
-  }
+  const menuTypeImages = (
+    <Menu>
+      <MrMenuItem text="Imagens Pagas" to='/picbuy' />
+      <MenuItem text='Imagens Gratis'>
+        <MrMenuItem text="Pexels" to='/freeimages/pexels' />
+        <MrMenuItem text="Pixabay" to='/freeimages/pixabay' />
+        <MrMenuItem text="Unsplash" to='/freeimages/unsplash' />
+      </MenuItem>
+    </Menu>
+  )
 
   return(
-    <Navbar>
+    <Navbar className={Classes.DARK}>
       <NavbarGroup>
-        <BtnBack/>
+        <NavbarHeading>
+          Picbuy
+        </NavbarHeading>
         <NavbarDivider />
-          <Button className={Classes.MINIMAL} icon="home" text="Home" onClick={() => history.push('/')} />
-          <Button className={Classes.MINIMAL} icon="media" text="Imagens Gratis" onClick={() => history.push('/freeimages')} />
+          <Brbutton className={Classes.MINIMAL} icon='home' text='Home' to='/'/>
+          <Popover content={menuTypeImages}>
+            <Brbutton className={Classes.MINIMAL} icon='media' text='Imagens'/>
+          </Popover>
           <Button className={Classes.MINIMAL} icon="person" text="Perfil" onClick={() => history.push('/profile')} />
       </NavbarGroup>
     </Navbar>

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card, H5, UL } from '@blueprintjs/core'
+// import { Card, H5 } from '@blueprintjs/core'
 
 export default function Sidebar(){
     return (
         <>
-            <Card>
+            {/* <Card>
                 <H5>Categorias</H5>
-            </Card> 
+            </Card>  */}
         </>
     );
 }
